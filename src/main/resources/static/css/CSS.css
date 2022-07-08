@@ -1,0 +1,37 @@
+.container {
+  padding: 2rem 0rem;
+}
+
+
+
+
+
+.form-title {
+  margin: -2rem 0rem 2rem;
+}
+
+.btn-round {
+  border-radius: 10rem;
+  
+}
+
+.img-tamano {
+ margin-top:-130px;
+ width: 40%;
+  
+}
+
+.delimiter {
+  padding: 1rem;  
+}
+
+
+.signup-section {
+  padding: 0.3rem 0rem;
+}
+
+.form-control input{
+	padding-left:200px;
+	
+}
+

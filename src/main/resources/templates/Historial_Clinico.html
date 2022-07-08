@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="Dentro_del_sistema::head"> 
+    <title>Registrar Nuevo Usuario</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="css/barra.css">
+</head>
+<body>
+
+		<!-- barra menu --> 
+		<header>
+<div class="ancho">
+<div class="logo">
+<p><a href="/load">MINSA</a></p>
+</div>
+<nav>
+<ul>
+<li><a href="/load">Salir</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+
+	<div style="margin-left: 10%; width: 80%;">
+	
+	<h2>Tu historial clinico</h2>
+	 <br>
+	 
+	 
+<table id="tabla_ciudadanos" class="table">
+    	<thead class="thead-dark">
+    	<tr>
+    		
+    		<th scope="col">Nombre del Doctor</th>
+    		<th scope="col">Vacuna</th>
+    		<th scope="col">Nombre del Ciudadano</th>
+    		<th scope="col">Fecha de vacunacion</th>
+    		<th scope="col">Dosis</th>
+    	</tr>
+    	</thead>
+    	<tbody>
+    	<tr th:each="v : ${detalleciudadano}">
+    		
+    		<td  th:each="c:${lista_emepleados}" th:if="${v.detalleidempleados}==${c.empleadoid}"
+    		th:text="${c.nombre}"></td>
+    		<td  th:each="d:${lista_vacunas}" th:if="${v.detalleidvacuna}==${d.tippvaid}"
+    		th:text="${d.nomtpva}"></td>
+    		<td  th:each="a:${lista_ciudadanos}" th:if="${v.detalleidciudadanos}==${a.ciudadanoid}"
+    		th:text="${a.nombre}"></td>
+    		<td th:text="${v.detallefechadosis}"></td>
+    		<td th:text="${v.detallenumerovacuna}"></td>
+    	</tr>
+    	</tbody>
+    </table>
+
+
+<!-- alerta --> 
+			
+    <div th:text="${mensaje}" class="alert alert-dark" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true"></span></button>
+    
+  </button>
+</div>
+	 
+	</div>
+	
+	
+	
+	
+	
+<footer th:replace="Dentro_del_sistema::footer"></footer>	
+</body>
+
+</html>

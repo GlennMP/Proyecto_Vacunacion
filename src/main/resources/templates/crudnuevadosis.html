@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="Dentro_del_sistema::head"> 
+    <title>Registrar Vacunado</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<header th:replace="Dentro_del_sistema::header"></header>
+
+
+        <!-- alerta --> 
+				<div th:fragment="div" th:text="${mensaje}" class="alert alert-light" role="alert">
+			    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true"></span></button>
+			    </button>
+			    </div>
+		<!-- fin de  alerta --> 
+
+
+
+<div style="margin-left: 10%; width: 80%;">
+	<h2>Registrar Nuevo Vacunado</h2>
+	 <br>
+	 <form th:action="@{/grabar_nueva_dosis}" th:object="${detalle}" method="post" >
+	 
+	 <br>
+	 <!--Nombres y apellidos -->
+    	<div class="form-row">
+	    	
+	    	
+	    	<div class="form-group col-md-4">
+	    		<label for="idciudadanossss">Doctor</label>
+	    		<select id="detalleidempleados" class="form-control" th:field="*{detalleidempleados}">
+	    			<option th:value="-1" th:text="Seleccionar"></option>
+	    			<option th:each="c : ${lista_emepleados}"
+							        
+					   th:value="${c.empleadoid}" th:text="${c.nombre}"
+							         >
+	    		</select>
+	    	</div>
+    	
+	    	<div class="form-group col-md-4">
+	    		<label for="idciudadanos">Vacuna</label>
+	    		<select id="detalleidvacuna" class="form-control" th:field="*{detalleidvacuna}">
+	    			<option th:value="-1" th:text="Seleccionar"></option>
+	    			<option th:each="d : ${lista_vacunas}"
+							        
+					   th:value="${d.tippvaid}" th:text="${d.nomtpva}"
+							         >
+	    		</select>
+	    	</div>
+	    	<div class="form-group col-md-4">
+	    		<label for="numero_vacu">N° vacunas</label>
+	    		<input type="number" value="1" required="" min="1"   class="form-control" id="detallenumerovacuna"  th:field="*{detallenumerovacuna}">	
+	    	</div>
+	    	
+	    	
+	    	<div class="form-group col-md-6">
+	    		<label for="fecha_dosis1">Fecha de vacunacion</label>
+	    		<input type="date" required="" class="form-control" id="detallefechadosis" th:field="*{detallefechadosis}">	
+	    	</div>
+    		
+	    
+    	</div> 	 
+    	<div class="form-group col-md-12">
+    	
+	    		<button type="submit" class="btn btn-primary">Registrar</button>
+	    </div>	
+	    
+	    
+	    	
+	    	
+	    	    	  		    	         	
+    </form>
+	</div>
+
+
+
+
+</body>
+
+<footer th:replace="Dentro_del_sistema::footer"></footer>
+</html>

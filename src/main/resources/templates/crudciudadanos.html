@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head"> 
+    <title>Registrar Ciudadanos</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div style="margin-left: 10%; width: 80%;">
+	<h2>Registrar Ciudadanos</h2>
+	 <br>
+	 <form th:action="@{/grabarCiu}" method="post" th:object="${ciudadanos}" >
+	 
+	 <br>
+	 <!--Nombres y apellidos -->
+    	<div class="form-row">
+	    	<div class="form-group col-md-6">
+	    		<label for="nombre">Nombres</label>
+	    		
+	    		<input type="text"  class="form-control" id="nom" th:field="*{nombre}" placeholder="Ingrese sus nombres">	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido">Apellidos</label>
+	    		
+	    		<input type="text"  class="form-control" id="ape" placeholder="Ingrese sus apellidos" th:field="*{apellido}">	
+	    	</div>
+    	</div>
+    	
+    	
+    	<!-- Telefono y DNI-->
+    	<div class="form-row">
+	    	<div class="form-group col-md-6">
+	    		<label for="telefono">Telefono</label>
+	    		<input type="number"  max="999999999"  class="form-control" id="tlf" placeholder="Ingrese su telefono" th:field="*{tlf}">	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="dni">DNI</label>
+	    		<input type="number"  max="99999999"  class="form-control" id="dni" placeholder="Ingrese su DNI" th:field="*{dni}">	
+	    	</div>
+    	</div>
+    	
+    	<br>
+    	<!--Direccion-->
+    	<div class="form-row">    	
+	    	<div class="form-group col-md-12">
+	    		<label for="direccion">Direccion del domicilio</label>
+	    		<input type="text" class="form-control" id="direccion" placeholder="Ingrese su direccion" th:field="*{direccion}">	
+	    	</div>
+    	</div>
+    	
+    	<!--Fecha de nacimiento y edad-->
+    	<div class="form-row">    	
+	    	<div class="form-group col-md-4">
+	    		<label for="nacimiento">Fecha de nacimiento</label>
+	    		<input type="text"  class="form-control" id="nacim" placeholder="YYYY-MM-dd" th:field="*{nacim}">	
+	    	</div>
+	    	<div class="form-group col-md-4">
+	    		<label for="edad">Edad</label>
+	    		<input type="number" max="120"  class="form-control" id="edad" placeholder="Ingrese su Edad" th:field="*{edad}">
+	    		<br>	   
+	    	</div>    	
+    	</div>   	 
+    	<div class="form-group col-md-12">
+	    		<button type="submit" class="btn btn-primary">Registrar</button>	
+	    </div>		    	  		    	         	
+    </form>
+	</div>
+</body>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

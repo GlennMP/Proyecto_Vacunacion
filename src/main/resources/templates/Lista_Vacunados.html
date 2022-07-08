@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="Dentro_del_sistema::head"> 
+    <title>Registrar Ciudadanos</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    
+</head>
+<body>
+	
+	<header th:replace="Dentro_del_sistema::header"></header>
+	
+	
+	    <!-- alerta 
+				<div th:fragment="div" th:text="${mensaje}" class="alert alert-light" role="alert">
+			    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true"></span></button>
+			    </button>
+			    </div> --> 
+		<!-- fin de  alerta --> 
+	
+	
+	<div style="margin-left: 10%; width: 80%;">
+	<h2>Listado de Vacunados</h2>
+	
+	<br>
+	
+    <table id="tabla_ciudadanos" class="table">
+    	<thead class="thead-dark">
+    	<tr>
+    		<th scope="col">Código</th>
+    		<th scope="col">Nombre</th>
+    		<th scope="col">Apellido</th>
+    		<th scope="col">Telefono</th>
+    		<th scope="col">Direccion</th>
+    		<th scope="col">Dni</th>
+    		<th scope="col">Nacimiento</th>
+    		<th scope="col">Estado</th>
+    		<th scope="col"></th>
+    	</tr>
+    	</thead>
+    	<tbody>
+    	<tr th:each="v : ${lista_cuidadanos}">
+    		<td th:text="${v.ciudadanoid}"></td>
+    		<td th:text="${v.nombre}"></td>
+    		<td th:text="${v.apellido}"></td>
+    		<td th:text="${v.tlf}"></td>
+    		<td th:text="${v.direccion}"></td>
+    		<td th:text="${v.dni}"></td>
+    		<td th:text="${v.nacim}"></td>
+    		<td th:each="d:${lista_estado}" th:if="${v.estado}==${d.estadoid}"
+    		th:text="${d.nombre}"></td>
+    		
+    		<td>
+    			<form method="post" action="/listar_Vacunado" >
+    				<input type="hidden" name="ciudadanoid" th:value="${v.ciudadanoid}" />
+    				<button type="submit" class="btn btn-danger">Nueva dosis</button>
+    			</form>
+    		</td>
+    	</tr>
+    	</tbody>
+    </table>
+   
+	</div>
+	
+	
+</body>
+ 
+ 
+ <footer th:replace="Dentro_del_sistema::footer"></footer>
+ 
+<script>
+
+$(document).ready( function () {
+    $('#tabla_ciudadanos').DataTable();
+} );
+
+</script>
+</html>

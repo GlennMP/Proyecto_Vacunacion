@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head"> 
+    <title>Registrar Ciudadanos</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="css/barra.css">
+
+
+</head>
+<body>
+
+
+		<!-- barra menu --> 
+		<header>
+<div class="ancho">
+<div class="logo">
+<p><a href="/load">MINSA</a></p>
+</div>
+<nav>
+<ul>
+<li><a data-toggle="modal" href="#loginCiu">Mira tu historial clinico</a></li>
+<li><a data-toggle="modal" href="#loginModal">Iniciar sesion</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+		    
+		    <!-- carusel de imagenes --> 
+		    
+	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="img/banner.png" alt="First slide" width="100%" height="300">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="img/bbanneer.png" alt="Second slide" width="100%" height="300">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="img/bane.png" alt="Third slide" width="100%" height="300">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+		    
+		    
+		    
+	<!-- modal de logion ciudadanos--> 
+ 
+    <div class="modal fade" id="loginCiu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog modal-dialog-centered" role="document">
+					    <div class="modal-content">    
+					      <div class="modal-body">
+					        <div class="form-title text-center ">
+					          <img class="img-tamaño" src="img/user.png">
+					        </div>
+					        <div class="d-flex flex-column text-center">
+					        
+					        
+					          <form 
+					          
+					          th:action="@{/valia_Ciu}" th:object="${ciudadanos}" method="post"
+					          >
+					            <div class="form-group">
+					            
+					              <input th:field="*{nombre}" type="text" required="" class="form-control" id="nombre" placeholder="Ingresar nombres">
+					            </div>
+					            <div class="form-group">
+					          
+					              <input th:field="*{dni}" type="password" required="" class="form-control" id="dni" placeholder="Ingresar DNI">
+					            </div>
+					           <button type="submit" class="btn btn-primary">Iniciar</button>
+					          </form>
+					          
+					          
+					        </div>
+					      </div>
+					    </div>
+					      
+					</div>
+					</div>	    
+		    
+		
+		
+    <!-- modal de logion emepelados --> 
+    
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog modal-dialog-centered" role="document">
+					    <div class="modal-content">    
+					      <div class="modal-body">
+					        <div class="form-title text-center ">
+					          <img class="img-tamano" src="img/user.png">
+					        </div>
+					        <div class="d-flex flex-column text-center">
+					        
+					        
+					          <form 
+					          
+					          th:action="@{/valida}" th:object="${empleados}" method="post"
+					          >
+					            <div class="form-group">
+					            
+					              <input th:field="*{nombreusuario}" required="" type="text"  class="form-control" id="email1" placeholder="Ingresar usuario">
+					            </div>
+					            <div class="form-group">
+					          
+					              <input th:field="*{contrasena}" required="" type="password" class="form-control" id="password1" placeholder="Ingresar contraseña">
+					            </div>
+					           <button type="submit" class="btn btn-primary">Iniciar</button>
+					          </form>
+					          
+					          
+					        </div>
+					      </div>
+					    </div>
+					      
+					</div>
+					</div>
+					
+
+
+ 
+        <!-- alerta --> 
+				<div th:fragment="div" th:text="${mensaje}" class="alert alert-light" role="alert">
+			    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true"></span></button>
+			    </button>
+			    </div>
+		<!-- fin de  alerta --> 
+					
+					
+					
+  <!-- contacto --> 			
+					
+<section class="py-12 bg-gray-100"><div class="section__anchor" id="contacto"></div><div class="container"><div class="row"><section aria-describedby="contacto-description" aria-labelledby="contacto-label" class="col-md-6 py-6 md:py-0 ml-auto mr-auto"><h2 id="contacto-label">Contacto</h2><p id="contacto-description"></p><div class="bg-white card relative branch-offices p-4 md:p-8"><div id="js-branch-address"><div><div class="row"><div class="col-md-12"><h3 class="font-bold text-lg mb-2 text-gray-900">Sede central</h3><p class="text-gray-800 mb-2">Av. Salaverry 801
+<br>Jesús María, Lima, Lima - 15072
+<br>Perú</p><p class="mb-4"><a class="track-ga-click" data-origin="contacto-sede-central-mapa-link" href="https://maps.google.com/maps?daddr=-12.072777,-77.041313&amp;ll=" rel="noreferrer" target="_blank">Ver Mapa<i class="arrow icon-right-s"></i></a></p><p class="mb-1 text-gray-800"><a class="track-ga-click" data-origin="contacto-sede-central-correo1-link" href="mailto:webmaster@minsa.gob.pe" target="_blank">webmaster@minsa.gob.pe</a></p><p class="mb-2 mt-4 font-bold text-gray-900 text-lg">Central telefónica</p><a class="d-block track-ga-click" data-origin="contacto-sede-central-teléfono1-link" href="tel:(01) 315 6600" target="_blank">(01) 315 6600</a><p class="mb-2 mt-4 font-bold text-gray-900 text-lg">Horario</p><p class="text-gray-800">La mesa de partes presencial, atiende de lunes a viernes de 08:30 a.m. a 04:30 p.m. La mesa de partes virtual a través del correo mesadepartesvirtual@minsa.gob.pe  y la central telefónica 315-6600 atiende de lunes a viernes de 8:30 a.m. a 4:30 p.m.  Toda documentación remitida después de las 4:30 p.m. o en días inhábiles, será considerada como recibida el día hábil siguiente.</p></div></div></div></div></div></section>
+</div></section>
+
+
+
+
+
+</body>
+
+<script>
+
+window.setTimeout(function(){
+	$(".alert").fadeTo(1500, 0).slideDown(1000, function(){
+		$(this).remove();
+	});
+},2000);
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+  
+</html>

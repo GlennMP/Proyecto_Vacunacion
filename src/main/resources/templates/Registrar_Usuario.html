@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="Dentro_del_sistema::head"> 
+    <title>Registrar Nuevo Usuario</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    
+</head>
+<body>
+
+<header th:replace="Dentro_del_sistema::header"></header>
+
+
+
+
+	<div style="margin-left: 10%; width: 80%;">
+	<h2>Registrar Nuevo Usuario</h2>
+	
+	 <br>
+	 <form th:action="@{/grabar}" method="post" th:object="${empleados}" >
+	 
+	 <br>
+	 <!--Nombres y apellidos -->
+    	<div  class="form-row">
+	    	<div class="form-group col-md-6">
+	    		<label for="nombre">Nombres</label>
+	    		
+	    		<input  type="text" maxlength="15" required="" pattern="[a-zA-Z ]+"  class="form-control" id="nom" th:field="*{nombre}" placeholder="Ingrese sus nombres">	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido">Apellidos</label>
+	    		
+	    		<input type="text" maxlength="15" required="" pattern="[a-zA-Z ]+"   class="form-control" id="ape" placeholder="Ingrese sus apellidos" th:field="*{apellido}">	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido">Telefono</label>
+	    		
+	    		<input type="text" minlength="9"  required="" pattern="[0-9]+" class="form-control" id="tel" placeholder="Ingrese sus telefono" th:field="*{telefono}">	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido">Edad</label>
+	    		
+	    		<input type="text" maxlength="2"  required="" pattern="[0-9]+"  class="form-control" id="eda" placeholder="Ingrese su edad" th:field="*{edad}">	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido">Nombre de Login</label>
+	    		
+	    		<input type="text" maxlength="15" required="" class="form-control" id="nomlog" placeholder="Ingrese su nombre de usuario" th:field="*{nombreusuario}">	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido">Contraseña</label>
+	    		
+	    		<input type="text" maxlength="15"  required=""  class="form-control" id="cont" placeholder="Ingrese su contraseña" th:field="*{contrasena}">	
+	    	</div>
+	    	<div class="form-row">
+	    	<div id="cargo"   class="form-group col-md-4">
+	    		<label id="cargo"  for="idciudadanos">Cargo</label>
+	    		<select id="cargo"   class="form-control" th:field="*{cargo}">
+	    			<option id="cargo"  th:value="-1" th:text="Seleccionar"></option>
+	    			<option th:each="c : ${lista_cargo}"
+							        
+					   th:value="${c.cargoid}" th:text="${c.nombrecargo}"
+							         >
+	    		</select>
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="nombre"></label>
+	    		
+	    		<input style="display: none"  class="form-control" id="nom" th:field="*{empleadoid}" >	
+	    	</div>
+    	</div>
+	    
+    	</div> 	 
+    	<div class="form-group col-md-12">
+	    		<button type="submit" class="btn btn-primary">Registrar</button>
+	    		<a href="/listar_usuarios" class="btn btn-primary">Volver al listado de Usuarios</a>
+	    </div>	
+	    
+	     
+	    	    	  		    	         	
+    </form>
+    
+    
+   
+    
+	</div>
+	
+
+	
+	
+
+
+
+</body>
+<footer th:replace="Dentro_del_sistema::footer"></footer>
+</html>

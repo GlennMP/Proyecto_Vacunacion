@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="Dentro_del_sistema::head"> 
+    <title>Registrar Nuevo Usuario</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+</head>
+<body>
+
+<header th:replace="Dentro_del_sistema::header"></header>
+
+
+
+        <!-- alerta --> 
+				<div th:fragment="div" th:text="${mensaje}" class="alert alert-light" role="alert">
+			    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true"></span></button>
+			    </button>
+			    </div>
+		<!-- fin de  alerta --> 
+
+
+
+	<div style="margin-left: 10%; width: 80%;">
+	<h2>Registrar Nueva Vacuna</h2>
+	 <br>
+	 <form th:action="@{/grabar_Vacuna}" method="post" th:object="${vacuna}" >
+	 
+	 <br>
+	 <!--Nombres y apellidos -->
+    	<div class="form-row">
+	    	<div class="form-group col-md-6">
+	    		<label for="nombre">Nombres de Vacuna</label>
+	    		
+	    		<input type="text" maxlength="15" required="" pattern="[a-zA-Z ]+"  class="form-control" id="nomtpva" th:field="*{nomtpva}" placeholder="Ingrese sus nombres">	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido">Numero de dosis</label>
+	    		
+	    		<input type="text" minlength="1" maxlength="2" required=""  class="form-control" id="dosistpva" placeholder="Ingrese sus apellidos" th:field="*{dosistpva}">	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido">Pais de origen</label>
+	    		
+	    		<input type="text" maxlength="15" required="" pattern="[a-zA-Z ]+" class="form-control" id="paistpva" placeholder="Ingrese sus telefono" th:field="*{paistpva}">	
+	    	</div>
+	    
+    	</div> 	 
+    	<div class="form-group col-md-12">
+	    		<button type="submit" class="btn btn-primary">Registrar</button>
+	    		<a href="/cargar_Vacunas" class="btn btn-primary">Volver a lista de Vacunas</a>
+	    </div>		    	  		    	         	
+    </form>
+	</div>
+</body>
+
+<footer th:replace="Dentro_del_sistema::footer"></footer>
+
+</html>

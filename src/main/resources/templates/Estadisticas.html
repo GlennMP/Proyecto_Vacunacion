@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="Dentro_del_sistema::head"> 
+    <title>Registrar Ciudadanos</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
+</head>
+<body>
+	
+	<header th:replace="Dentro_del_sistema::header"></header>
+	
+	<div style="margin-left: 10%; width: 80%;">
+	<h2>Vacunados</h2>
+	
+	
+	<!-- boton de registrar usuario -->
+		   <div class="text-right">	
+		    <a href="/listadevacunacion" class="btn btn-primary">Lista de vacunacion en PDF</a> 
+		    <a href="/graficoestadisticas" class="btn btn-primary">Grafico de vacunacion en PDF</a> 
+		   </div>
+	
+	
+	<br>
+	
+	
+    <table id="tabla_ciudadanos" class="table">
+    	<thead class="thead-dark">
+    	<tr>
+    		<th scope="col">Nombre</th>
+    		<th scope="col">Apellido</th>
+    		<th scope="col">Telefono</th>
+    		<th scope="col">Direccion</th>
+    		<th scope="col">Dni</th>
+    		<th scope="col">Nacimiento</th>
+    	</tr>
+    	</thead>
+    	<tbody>
+    	<tr th:each="v : ${lista_novacunadoss}">
+    		<td th:text="${v.nombre}"></td>
+    		<td th:text="${v.apellido}"></td>
+    		<td th:text="${v.tlf}"></td>
+    		<td th:text="${v.direccion}"></td>
+    		<td th:text="${v.dni}"></td>
+    		<td th:text="${v.nacim}"></td>
+    	</tr>
+    	</tbody>
+    </table>
+    
+    
+    <br>
+    
+    <h2>No Vacunados</h2>
+	
+	<br>
+	
+	
+    <table id="tabla_ciudadanos2" class="table">
+    	<thead class="thead-dark">
+    	<tr>
+    		<th scope="col">Nombre</th>
+    		<th scope="col">Apellido</th>
+    		<th scope="col">Telefono</th>
+    		<th scope="col">Direccion</th>
+    		<th scope="col">Dni</th>
+    		<th scope="col">Nacimiento</th>
+    	</tr>
+    	</thead>
+    	<tbody>
+    	<tr th:each="c : ${lista_vacunadoss}">
+    		<td th:text="${c.nombre}"></td>
+    		<td th:text="${c.apellido}"></td>
+    		<td th:text="${c.tlf}"></td>
+    		<td th:text="${c.direccion}"></td>
+    		<td th:text="${c.dni}"></td>
+    		<td th:text="${c.nacim}"></td>
+    	</tr>
+    	</tbody>
+    </table>
+   
+	</div>
+	
+	
+</body>
+
+<footer th:replace="Dentro_del_sistema::footer"></footer>
+
+<script>
+
+$(document).ready( function () {
+    $('#tabla_ciudadanos').DataTable();
+} );
+
+</script>
+
+<script>
+
+$(document).ready( function () {
+    $('#tabla_ciudadanos2').DataTable();
+} );
+
+</script>
+</html>

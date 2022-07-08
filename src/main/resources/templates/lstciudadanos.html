@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    
+ 	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+
+</head>
+<body>
+	<!-- Contendedor de la tabla -->
+	<div style="margin-left: 10%; width: 80%;">
+	<h2>Registrar Ciudadanos</h2>
+	 <br>
+			<table class="table table-hover">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">Nombre</th>
+			      <th scope="col">Apellido</th>
+			      <th scope="col">Telefono</th>
+			      <th scope="col">Direccion</th>
+			      <th scope="col">DNI</th>
+			      <th scope="col">Fecha de Nacimiento</th>
+			      <th scope="col">Edad</th>
+			      <th scope="col"></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+				  <!-- Lista de ciudadanos -->
+			    <tr th:each="l : ${lstciudadanos}">
+			      <td th:text="${l.id}"></td>
+			      <td th:text="${l.nombre}"></td>
+			      <td th:text="${l.apellido}"></td>
+			      <td th:text="${l.tlf}"></td>
+			      <td th:text="${l.direccion}"></td>
+			      <td th:text="${l.dni}"></td>
+			      <td th:text="${l.nacim}"></td>
+			      <td th:text="${l.edad}"></td> 
+			      <td>
+			           <form>
+			           <button type="button" class="btn btn-info btn-round"data-toggle="modal" data-target="#editarModal" >Registrar</button>
+			           </form>
+			      </td>
+			    </tr>
+			  </tbody>
+			</table>
+	</div>
+
+</body>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	<div style="margin-left: 10%; width: 80%;">
+	<h2>Listado de vacunados</h2>
+    <table class="table">
+    	<thead class="thead-dark">
+    	<tr>
+    		<th scope="col">Código</th>
+    		<th scope="col">Cuidadano</th>
+    		<th scope="col">Empleado</th>
+    		<th scope="col">Tipo de vacuna</th>
+    		<th scope="col">Fecha de 1ra dosis</th>
+    		<th scope="col">Fecha de 2ra dosis</th>
+    		<th scope="col">Nro de dosis</th>
+    		<th scope="col"></th>
+    		<th scope="col"></th>
+    	</tr>
+    	</thead>
+    	<tbody>
+    	<tr th:each="v : ${lstVacunados}">
+    		<td th:text="${v.id_vacu}"></td>
+    		<td th:text="${v.idciudadanos}"></td>
+    		<td th:text="${v.idempleados}"></td>
+    		<td th:text="${v.idvacuna}"></td>
+    		<td th:text="${v.fecha_dosis1}"></td>
+    		<td th:text="${v.fecha_dosis2}"></td>
+    		<td th:text="${v.numero_vacu}"></td>
+    		
+    		<td>
+    			<a class="btn btn-warning" th:href="@{/editarVac/} + ${v.id_vacu}">Editar</a>
+    		</td>
+    		
+    		<td>
+    			<form th:action="@{/eliminarVac}" method="post">
+    				<input type="hidden" name="id_vacu" th:value="${v.id_vacu}"/>
+    				<button type="submit" class="btn btn-danger">Eliminar</button>
+    			</form>
+    		</td>
+    	</tr>
+    	</tbody>
+    </table>
+    <a th:href="@{/cargarVac}" class="btn btn-primary">Regresar</a>
+	</div>
+</body>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

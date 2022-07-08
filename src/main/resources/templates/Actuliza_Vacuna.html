@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="Dentro_del_sistema::head"> 
+    <title>Registrar Vacunado</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<header th:replace="Dentro_del_sistema::header"></header>
+
+
+<div style="margin-left: 10%; width: 80%;">
+	<h2>Registrar Nueva Dosis</h2>
+	 <br>
+	 <form th:action="@{/grabar_Vacunado}" th:object="${ciudadanos}" method="post" >
+	 
+	 <br>
+	 <!--Nombres y apellidos -->
+    	<div class="form-row">
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido">Nombre</label>
+	    		<input type="text"  class="form-control" id="nombre" placeholder="Ingrese sus apellidos" th:field="*{nombre}" readonly>	
+	    	</div>
+	    	
+	    	<div class="form-group col-md-4">
+	    		<label for="idciudadanossss">Doctor</label>
+	    		<select  id="id_empleado" class="form-control" th:field="*{empleadoid}">
+	    			<option th:value="-1" th:text="Seleccionar"></option>
+	    			<option th:each="c : ${lista_emepleados}"
+							        
+					   th:value="${c.empleadoid}" th:text="${c.nombre}"
+							         >
+	    		</select>
+	    	</div>
+	    	
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido">Estado</label>
+	    		<input type="text" value="Vacunado" class="form-control" id="id_estado" placeholder="Ingrese sus apellidos" readonly>	
+	    	</div>
+	    	
+	    	<div class="form-group col-md-4">
+	    		<label for="numero_vacu">N° vacunas</label>
+	    		<input type="number" required="" min="2" max="4"  class="form-control" id="numero_vacuna" placeholder="Cantidad de vacunas" th:field="*{numerovacuna}">	
+	    	</div>
+	    	
+	    	<div class="form-group col-md-6">
+	    		<label for="fecha_dosis1">Fecha de vacunacion</label>
+	    		<input type="date" required="" class="form-control" id="fecha_dosis" th:field="*{fechadosis}">	
+	    	</div>
+    		
+	    
+    	</div> 	 
+    	<div class="form-group col-md-12">
+    	
+	    		<button type="submit" class="btn btn-primary">Registrar</button>
+	    		<a href="/cargar_Vacunado2" class="btn btn-primary">Volver a lista de Vacunados</a>
+	    </div>	
+	    
+	    
+	    
+    	<div class="form-row">
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido"></label>
+	    		
+	    		<input type="hidden"  class="form-control" id="id" placeholder="Ingrese sus apellidos" th:field="*{ciudadanoid}">	
+	    	</div>
+    	</div>
+	    	
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido"></label>
+	    		
+	    		<input type="hidden"  class="form-control" id="apellido" placeholder="Ingrese sus apellidos" th:field="*{apellido}">	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido"></label>
+	    		
+	    		<input type="hidden"  class="form-control" id="tlf" placeholder="Ingrese sus apellidos" th:field="*{tlf}" >	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido"></label>
+	    		
+	    		<input type="hidden"  class="form-control" id="direccion" placeholder="Ingrese sus apellidos" th:field="*{direccion}">	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido"></label>
+	    		
+	    		<input type="hidden"  class="form-control" id="dni" placeholder="Ingrese sus apellidos" th:field="*{dni}" >	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido"></label>
+	    		<input type="hidden"  class="form-control" id="vacuid" placeholder="Ingrese sus apellidos" th:field="*{vacuid}" readonly>	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido"></label>
+	    		<input type="hidden" value="Vacunado" class="form-control" id="id_estado" placeholder="Ingrese sus apellidos" th:field="*{estado}"  >	
+	    	</div>
+	    	<div class="form-group col-md-6">
+	    		<label for="apellido"></label>
+	    		
+	    		<input type="hidden"  class="form-control" id="nacim" placeholder="Ingrese sus apellidos" th:field="*{nacim}">	
+	    	</div>
+	    	
+	    
+	    	    	  		    	         	
+    </form>
+	</div>
+
+
+
+
+</body>
+
+<footer th:replace="Dentro_del_sistema::footer"></footer>
+
+</html>
