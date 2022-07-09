@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportegrafico" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="daf23293-df65-40a9-906a-4eff4be29200">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Proyecto Ciclo 5"/>
+	<queryString language="SQL">
+		<![CDATA[select v.nom_tpva as Vacunas,count(*) as cantidad from tb_detalle_ciudadanos d 
+join tb_tipo_vacuna v on d.idvacuna=v.id_tpva group by v.nom_tpva]]>
+	</queryString>
+	<field name="Vacunas" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Vacunas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_tipo_vacuna"/>
+	</field>
+	<field name="cantidad" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="cantidad"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement x="256" y="5" width="290" height="45" uuid="928228eb-2db8-4cf0-838b-b307cd59284e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad de dosis aplicadas segun la vacuna]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="291" splitType="Stretch">
+			<pie3DChart>
+				<chart evaluationTime="Report">
+					<reportElement x="156" y="20" width="490" height="250" uuid="6e50e0f0-55e8-4c39-8388-10b92feb8a7d"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{Vacunas}]]></keyExpression>
+					<valueExpression><![CDATA[$F{cantidad}]]></valueExpression>
+					<labelExpression><![CDATA[$F{cantidad}.toString()]]></labelExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</summary>
+</jasperReport>
